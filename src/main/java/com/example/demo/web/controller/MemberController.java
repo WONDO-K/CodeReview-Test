@@ -13,7 +13,7 @@ public class MemberController {
 
     private final MemberService memberService;
 
-    @PostMapping
+    @PostMapping("/create")
     public MemberCreateResponse create(@RequestBody MemberCreateRequest request) {
         return memberService.create(request);
     }
