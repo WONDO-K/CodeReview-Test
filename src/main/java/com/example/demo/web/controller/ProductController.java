@@ -13,7 +13,7 @@ public class ProductController {
 
     private final ProductService productService;
 
-    @PostMapping("/add")
+    @PostMapping("/create")
     public Long create(@RequestBody ProductCreateRequest request) {
         return productService.create(request);
     }
