@@ -19,8 +19,8 @@ public class MemberController {
         return memberService.create(request);
     }
 
-    @GetMapping("/{memberid}")
-    public String getMember(@PathVariable("memberid") Long memberId) {
+    @GetMapping("/{id}")
+    public String getMember(@PathVariable("id") Long memberId) {
         // This is a placeholder implementation.
         return "Member ID: " + memberId;
     }
