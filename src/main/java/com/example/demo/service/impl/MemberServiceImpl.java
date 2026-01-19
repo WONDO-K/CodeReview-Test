@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -42,5 +43,12 @@ public class MemberServiceImpl implements MemberService {
         return memberRepository.findAll().stream()
                 .map(MemberResponse::from) // 엔티티를 DTO로 매핑
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public MemberResponse getMember(Long memberId) {
+        Optional<Member> findMember = memberRepository.findById(memberId);
+        return findMember.map(MemberResponse::from)
+                .orElseThrow(() -> new IllegalArgumentException("Member not found with id: " + memberId));
     }
 }

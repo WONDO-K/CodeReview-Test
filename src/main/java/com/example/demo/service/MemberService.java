@@ -11,4 +11,6 @@ public interface MemberService {
     MemberCreateResponse create(MemberCreateRequest request);
 
     List<MemberResponse> getAllMembers(); // DTO 반환으로 변경
+
+    MemberResponse getMember(Long memberId);
 }

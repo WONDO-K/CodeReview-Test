@@ -24,9 +24,9 @@ public class MemberController {
     }
 
     @GetMapping("/{id}")
-    public String getMember(@PathVariable("id") Long memberId) {
+    public MemberResponse getMember(@PathVariable("id") Long memberId) {
         // This is a placeholder implementation.
-        return "Member ID: " + memberId;
+        return memberService.getMember(memberId);
     }
 
     @GetMapping
