@@ -6,8 +6,11 @@ import com.example.demo.service.MemberService;
 import com.example.demo.web.dto.MemberCreateRequest;
 import com.example.demo.web.dto.MemberCreateResponse;
 import lombok.RequiredArgsConstructor;
+import org.hibernate.mapping.Map;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -30,5 +33,10 @@ public class MemberServiceImpl implements MemberService {
 
         Member saved = memberRepository.save(member);
         return new MemberCreateResponse(saved.getId());
+    }
+
+    @Override
+    public List<Member> getAllMembers() {
+        return memberRepository.findAll();
     }
 }

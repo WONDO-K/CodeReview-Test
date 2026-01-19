@@ -1,11 +1,14 @@
 package com.example.demo.web.controller;
 
+import com.example.demo.domain.Member;
 import com.example.demo.service.MemberService;
 import com.example.demo.web.dto.MemberCreateRequest;
 import com.example.demo.web.dto.MemberCreateResponse;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -23,5 +26,10 @@ public class MemberController {
     public String getMember(@PathVariable("id") Long memberId) {
         // This is a placeholder implementation.
         return "Member ID: " + memberId;
+    }
+
+    @GetMapping
+    public List<Member> getAllMembers() {
+        memberService.getAllMembers();
     }
 }
