@@ -9,5 +9,4 @@ import java.util.List;
 public interface MemberService {
     MemberCreateResponse create(MemberCreateRequest request);
 
-    List<Member> getAllMembers();
 }

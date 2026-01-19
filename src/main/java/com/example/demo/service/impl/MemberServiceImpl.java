@@ -35,8 +35,5 @@ public class MemberServiceImpl implements MemberService {
         return new MemberCreateResponse(saved.getId());
     }
 
-    @Override
-    public List<Member> getAllMembers() {
-        return memberRepository.findAll();
-    }
+
 }
