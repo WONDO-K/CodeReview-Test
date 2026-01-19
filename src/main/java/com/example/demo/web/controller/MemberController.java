@@ -1,6 +1,7 @@
 package com.example.demo.web.controller;
 
 import com.example.demo.domain.Member;
+import com.example.demo.domain.dto.MemberResponse;
 import com.example.demo.service.MemberService;
 import com.example.demo.web.dto.MemberCreateRequest;
 import com.example.demo.web.dto.MemberCreateResponse;
@@ -29,7 +30,7 @@ public class MemberController {
     }
 
     @GetMapping
-    public List<Member> getAllMembers() {
+    public List<MemberResponse> getAllMembers() { // DTO 반환으로 변경
         return memberService.getAllMembers();
     }
 }

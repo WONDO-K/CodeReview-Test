@@ -1,6 +1,7 @@
 package com.example.demo.service.impl;
 
 import com.example.demo.domain.Member;
+import com.example.demo.domain.dto.MemberResponse;
 import com.example.demo.repository.MemberRepository;
 import com.example.demo.service.MemberService;
 import com.example.demo.web.dto.MemberCreateRequest;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -36,7 +38,9 @@ public class MemberServiceImpl implements MemberService {
     }
 
     @Override
-    public List<Member> getAllMembers() {
-        return memberRepository.findAll();
+    public List<MemberResponse> getAllMembers() { // DTO 반환으로 변경
+        return memberRepository.findAll().stream()
+                .map(MemberResponse::from) // 엔티티를 DTO로 매핑
+                .collect(Collectors.toList());
     }
 }
