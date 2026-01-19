@@ -28,5 +28,8 @@ public class MemberController {
         return "Member ID: " + memberId;
     }
 
-
+    @GetMapping
+    public List<Member> getAllMembers() {
+        return memberService.getAllMembers();
+    }
 }
