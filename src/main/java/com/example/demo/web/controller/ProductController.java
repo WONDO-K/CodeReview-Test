@@ -28,7 +28,7 @@ public class ProductController {
         return ResponseEntity.noContent().build(); // 요청 성공, 클라이언트에게 내려줄 응답바디는 없다.
     }
 
-    @GetMapping("/{productId}")
+    @GetMapping("/get/{productId}")
     public Optional<Product> getProduct(@PathVariable Long productId) {
         return productService.getProduct(productId);
     }
