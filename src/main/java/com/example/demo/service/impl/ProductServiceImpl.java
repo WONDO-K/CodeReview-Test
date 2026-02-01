@@ -9,6 +9,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Optional;
+
 @Service
 @RequiredArgsConstructor
 @Transactional
@@ -30,4 +32,11 @@ public class ProductServiceImpl implements ProductService {
     public void delete(Long productId) {
         productRepository.deleteById(productId);
     }
+
+    @Override
+    public Optional<Product> getProduct(Long productId) {
+        return productRepository.findById(productId);
+    }
+
+
 }
