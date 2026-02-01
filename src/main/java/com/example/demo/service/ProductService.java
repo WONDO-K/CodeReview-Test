@@ -5,4 +5,6 @@ import com.example.demo.web.dto.ProductCreateRequest;
 
 public interface ProductService {
     Long create(ProductCreateRequest request);
+
+    void delete(Long productId);
 }
