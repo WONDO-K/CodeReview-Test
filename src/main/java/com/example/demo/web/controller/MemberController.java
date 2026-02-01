@@ -33,4 +33,5 @@ public class MemberController {
     public List<MemberResponse> getAllMembers() { // DTO 반환으로 변경
         return memberService.getAllMembers();
     }
+
 }
