@@ -65,4 +65,14 @@ public class ProductServiceImpl implements ProductService {
         product.decreaseStock(quantity);
     }
 
+    @Override
+    @Transactional
+    public void updatePrice(Long productId, int price) {
+
+        Product product = productRepository.findById(productId)
+                .orElseThrow(() -> new RuntimeException("상품 없음"));
+
+        product.updatePrice(price);
+    }
+
 }
