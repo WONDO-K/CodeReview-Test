@@ -27,4 +27,6 @@ public interface ProductService {
 
     void updatePrice(Long productId, int price);
 
+    void updateName(Long productId, String name);
+
 }
