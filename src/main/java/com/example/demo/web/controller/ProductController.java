@@ -2,6 +2,7 @@
 package com.example.demo.web.controller;
 
 import com.example.demo.domain.Product;
+import com.example.demo.domain.dto.DecreaseStockRequest;
 import com.example.demo.domain.dto.ProductResponse;
 import com.example.demo.service.ProductService;
 import com.example.demo.web.dto.ProductCreateRequest;
@@ -50,5 +51,14 @@ public class ProductController {
                 productService.search(keyword, minPrice, maxPrice, pageable);
 
         return ResponseEntity.ok(result);
+    }
+
+    @PostMapping("/{productId}/decrease-stock")
+    public ResponseEntity<Void> decreaseStock(
+            @PathVariable Long productId,
+            @RequestBody DecreaseStockRequest request
+    ) {
+        productService.decreaseStock(productId, request.quantity());
+        return ResponseEntity.noContent().build();
     }
 }

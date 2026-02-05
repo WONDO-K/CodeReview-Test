@@ -55,4 +55,13 @@ public class ProductServiceImpl implements ProductService {
         return page.map(ProductResponse::from);
     }
 
+    @Override
+    public void decreaseStock(Long productId, int quantity) {
+
+        Product product = productRepository.findById(productId)
+                .orElseThrow(() -> new RuntimeException("상품 없음"));
+
+        product.decreaseStock(quantity);
+    }
+
 }

@@ -23,5 +23,8 @@ public interface ProductService {
             Pageable pageable
     );
 
+    void decreaseStock(Long productId, int quantity);
+
+
 
 }
