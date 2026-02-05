@@ -75,4 +75,15 @@ public class ProductServiceImpl implements ProductService {
         product.updatePrice(price);
     }
 
+    @Transactional
+    @Override
+    public void updateName(Long productId, String name) {
+
+        Product product = productRepository.findById(productId)
+                .orElseThrow(() -> new RuntimeException("상품 없음"));
+
+        product.updateName(name);
+    }
+
+
 }

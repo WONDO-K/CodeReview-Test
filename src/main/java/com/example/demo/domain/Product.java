@@ -33,4 +33,11 @@ public class Product {
         }
         this.price = price;
     }
+
+    public void updateName(String name) {
+        if (name == null || name.isBlank()) {
+            throw new IllegalArgumentException("상품 이름은 필수입니다.");
+        }
+        this.name = name;
+    }
 }
