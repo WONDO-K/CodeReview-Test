@@ -4,6 +4,7 @@ package com.example.demo.web.controller;
 import com.example.demo.domain.Product;
 import com.example.demo.domain.dto.DecreaseStockRequest;
 import com.example.demo.domain.dto.ProductResponse;
+import com.example.demo.domain.dto.UpdatePriceRequest;
 import com.example.demo.service.ProductService;
 import com.example.demo.web.dto.ProductCreateRequest;
 import lombok.RequiredArgsConstructor;
@@ -59,6 +60,15 @@ public class ProductController {
             @RequestBody DecreaseStockRequest request
     ) {
         productService.decreaseStock(productId, request.quantity());
+        return ResponseEntity.noContent().build();
+    }
+
+    @PatchMapping("/{productId}/price")
+    public ResponseEntity<Void> updatePrice(
+            @PathVariable Long productId,
+            @RequestBody UpdatePriceRequest request
+    ) {
+        productService.updatePrice(productId, request.price());
         return ResponseEntity.noContent().build();
     }
 }

@@ -26,4 +26,11 @@ public class Product {
         }
         this.stock -= quantity;
     }
+
+    public void updatePrice(int price) {
+        if (price < 0) {
+            throw new IllegalArgumentException("가격은 0 이상이어야 합니다.");
+        }
+        this.price = price;
+    }
 }
