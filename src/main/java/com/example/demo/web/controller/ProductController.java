@@ -38,7 +38,7 @@ public class ProductController {
         return productService.getProduct(productId);
     }
 
-    @GetMapping
+    @GetMapping("/list")
     public ResponseEntity<Page<ProductResponse>> searchProducts(
             @RequestParam(required = false) String keyword,
             @RequestParam(required = false) Integer minPrice,
