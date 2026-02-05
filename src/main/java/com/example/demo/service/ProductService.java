@@ -16,7 +16,12 @@ public interface ProductService {
 
     Optional<Product> getProduct(Long productId);
 
-
+    Page<ProductResponse> search(
+            String keyword,
+            Integer minPrice,
+            Integer maxPrice,
+            Pageable pageable
+    );
 
 
 }

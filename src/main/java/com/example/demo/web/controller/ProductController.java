@@ -38,5 +38,17 @@ public class ProductController {
         return productService.getProduct(productId);
     }
 
+    @GetMapping()
+    public ResponseEntity<Page<ProductResponse>> searchProducts(
+            @RequestParam(required = false) String keyword,
+            @RequestParam(required = false) Integer minPrice,
+            @RequestParam(required = false) Integer maxPrice,
+            @PageableDefault(size = 10, sort = "id", direction = Sort.Direction.DESC)
+            Pageable pageable
+    ) {
+        Page<ProductResponse> result =
+                productService.search(keyword, minPrice, maxPrice, pageable);
 
+        return ResponseEntity.ok(result);
+    }
 }

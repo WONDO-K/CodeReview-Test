@@ -41,6 +41,18 @@ public class ProductServiceImpl implements ProductService {
         return productRepository.findById(productId);
     }
 
+    @Override
+    public Page<ProductResponse> search(
+            String keyword,
+            Integer minPrice,
+            Integer maxPrice,
+            Pageable pageable
+    ) {
 
+        Page<Product> page =
+                productRepository.search(keyword, minPrice, maxPrice, pageable);
+
+        return page.map(ProductResponse::from);
+    }
 
 }
