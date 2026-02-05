@@ -63,7 +63,7 @@ public class ProductController {
         return ResponseEntity.noContent().build();
     }
 
-    @PatchMapping("/{productId}/update/price")
+    @PatchMapping("/{productId}/price")
     public ResponseEntity<Void> updatePrice(
             @PathVariable Long productId,
             @RequestBody UpdatePriceRequest request
