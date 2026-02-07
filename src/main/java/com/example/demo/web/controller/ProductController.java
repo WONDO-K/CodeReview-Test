@@ -89,4 +89,9 @@ public class ProductController {
     public boolean exists(@PathVariable Long productId) {
         return productRepository.existsById(productId);
     }
+
+    @GetMapping("/count")
+    public long count() {
+        return productRepository.count();
+    }
 }
