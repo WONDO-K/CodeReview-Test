@@ -6,6 +6,7 @@ import com.example.demo.domain.dto.DecreaseStockRequest;
 import com.example.demo.domain.dto.ProductResponse;
 import com.example.demo.domain.dto.UpdatePriceRequest;
 import com.example.demo.domain.dto.UpdateProductNameRequest;
+import com.example.demo.repository.ProductRepository;
 import com.example.demo.service.ProductService;
 import com.example.demo.web.dto.ProductCreateRequest;
 import lombok.RequiredArgsConstructor;
@@ -24,6 +25,7 @@ import java.util.Optional;
 public class ProductController {
 
     private final ProductService productService;
+    private final ProductRepository productRepository;
 
     @PostMapping("/add")
     public Long create(@RequestBody ProductCreateRequest request) {
@@ -81,5 +83,10 @@ public class ProductController {
 
         productService.updateName(productId, request.name());
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("/{productId}/exists")
+    public boolean exists(@PathVariable Long productId) {
+        return productRepository.existsById(productId);
     }
 }
