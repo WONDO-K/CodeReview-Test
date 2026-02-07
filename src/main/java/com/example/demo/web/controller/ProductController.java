@@ -105,4 +105,11 @@ public class ProductController {
     public void deleteAll() {
         productRepository.deleteAll();
     }
+    @GetMapping("/{productId}/name-length")
+    public int getNameLength(@PathVariable Long productId) {
+        return productRepository.findById(productId)
+                .orElseThrow()
+                .getName()
+                .length();
+    }
 }
