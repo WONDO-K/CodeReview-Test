@@ -112,4 +112,20 @@ public class ProductController {
                 .getName()
                 .length();
     }
+
+    @GetMapping("/{productId}/name")
+    public String getName(@PathVariable Long productId) {
+        return productRepository.findById(productId)
+                .orElseThrow()
+                .getName();
+    }
+
+    @PostMapping("/{productId}/price/increase")
+    public void increasePrice(@PathVariable Long productId) {
+
+        Product product = productRepository.findById(productId)
+                .orElseThrow();
+
+        product.updatePrice(product.getPrice() + 100);
+    }
 }
