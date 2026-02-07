@@ -73,7 +73,7 @@ public class ProductController {
         return ResponseEntity.noContent().build();
     }
 
-    @PatchMapping("/{productId}/name")
+    @PatchMapping("/{productId}")
     public ResponseEntity<Void> updateName(
             @PathVariable Long productId,
             @RequestBody UpdateProductNameRequest request
