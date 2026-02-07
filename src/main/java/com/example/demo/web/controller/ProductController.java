@@ -94,4 +94,11 @@ public class ProductController {
     public long count() {
         return productRepository.count();
     }
+
+    @GetMapping("/{productId}/price")
+    public int getPrice(@PathVariable Long productId) {
+        return productRepository.findById(productId)
+                .orElseThrow()
+                .getPrice();
+    }
 }
