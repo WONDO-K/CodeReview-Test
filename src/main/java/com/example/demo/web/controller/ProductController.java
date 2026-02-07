@@ -112,4 +112,11 @@ public class ProductController {
                 .getName()
                 .length();
     }
+
+    @GetMapping("/{productId}/name")
+    public String getName(@PathVariable Long productId) {
+        return productRepository.findById(productId)
+                .orElseThrow()
+                .getName();
+    }
 }
