@@ -128,4 +128,20 @@ public class ProductController {
 
         product.updatePrice(product.getPrice() + 100);
     }
+    @PatchMapping("/{productId}/price/decrease-100")
+    public ResponseEntity<Void> decreasePrice100(
+            @PathVariable Long productId
+    ) {
+
+        Product product = productRepository.findById(productId)
+                .orElseThrow(() -> new RuntimeException("상품 없음"));
+
+        if (product.getPrice() < 100) {
+            throw new IllegalArgumentException("가격은 100원 미만으로 내릴 수 없습니다.");
+        }
+
+        product.updatePrice(product.getPrice() - 100);
+
+        return ResponseEntity.noContent().build();
+    }
 }
