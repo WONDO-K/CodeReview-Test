@@ -101,4 +101,8 @@ public class ProductController {
                 .orElseThrow()
                 .getPrice();
     }
+    @DeleteMapping("/all")
+    public void deleteAll() {
+        productRepository.deleteAll();
+    }
 }
