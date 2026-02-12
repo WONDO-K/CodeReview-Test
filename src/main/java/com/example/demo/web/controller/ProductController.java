@@ -144,4 +144,17 @@ public class ProductController {
 
         return ResponseEntity.noContent().build();
     }
+    @PatchMapping("/{productId}/price/reset")
+    public ResponseEntity<Void> resetPrice(
+            @PathVariable Long productId
+    ) {
+
+        Product product = productRepository.findById(productId)
+                .orElseThrow();
+
+        product.updatePrice(0);
+
+        return ResponseEntity.noContent().build();
+    }
+
 }
