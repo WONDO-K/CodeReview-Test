@@ -156,13 +156,5 @@ public class ProductController {
 
         return ResponseEntity.noContent().build();
     }
-    @GetMapping("/{productId}/summary")
-    public String getSummary(@PathVariable Long productId) {
-
-        Product product = productRepository.findById(productId)
-                .orElseThrow();
-
-        return product.getId() + " - " + product.getName();
-    }
 
 }
